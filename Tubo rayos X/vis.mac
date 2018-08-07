@@ -1,0 +1,37 @@
+/vis/open OGL 600x600-0+0
+/vis/viewer/set/autoRefresh false
+/vis/verbose 0 # errors
+/vis/drawVolume
+
+/vis/viewer/set/style wireframe
+/vis/viewer/set/auxiliaryEdge true
+/vis/viewer/set/lineSegmentsPerCircle 100
+
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
+
+/vis/filtering/trajectories/create/particleFilter
+/vis/filtering/trajectories/particleFilter-0/add mu-
+
+# To invert the above, drawing all particles except gammas,
+# keep the above two lines but also add:
+/vis/filtering/trajectories/particleFilter-0/invert true
+
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/set gamma yellow
+/vis/modeling/trajectories/drawByParticleID-0/set opticalphoton cyan
+/vis/modeling/trajectories/drawByParticleID-0/set e- blue
+/vis/modeling/trajectories/drawByParticleID-0/set mu- red
+/vis/modeling/trajectories/drawByParticleID-0/set e+ brown
+/vis/modeling/trajectories/drawByParticleID-0/set mu+ gray
+
+/vis/scene/endOfEventAction accumulate
+
+
+/vis/scene/add/scale
+/vis/scene/add/axes
+/vis/scene/add/eventID
+
+/vis/viewer/set/autoRefresh true
